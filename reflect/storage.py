@@ -18,7 +18,7 @@ def get_credentials(team_id):
     return {
         'oauth': creds['access_token'],
         'bot': creds['bot']['bot_access_token'],
-x    }
+    }
 
 
 def tasks(team_id, user_id):
