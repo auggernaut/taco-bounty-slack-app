@@ -28,4 +28,5 @@ poke around
 
 ### Deploy scripts to gcloud
 `cd bounties`  
-`gcloud functions deploy dispatch --env-vars-file env.yaml --runtime python37 --trigger-http`
+`gcloud functions deploy dispatch --env-vars-file env.yaml --runtime python37 --trigger-http`  
+`gcloud functions deploy oauth_redirect --env-vars-file env.yaml --runtime python37 --trigger-http`

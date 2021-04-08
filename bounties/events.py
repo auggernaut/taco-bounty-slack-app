@@ -14,7 +14,7 @@ def reaction_added_event(request):
     parsed = request.json
     team_id = parsed['team_id']
     event = parsed['event']
-    if event['reaction'] in ('ididit', 'udidit'):
+    if event['reaction'] in ('rick', 'taco-bounty'):
         item = event['item']
         event_user_id = event['user']
         if item['type'] == 'message':
@@ -23,9 +23,9 @@ def reaction_added_event(request):
             msg_resp = get_message(team_id, channel, msg_ts)
             msg = msg_resp['messages'][0]
             msg_team_id, msg_user_id, text  = msg['team'], msg['user'], msg['text']
-            if event['reaction'] == 'ididit':
+            if event['reaction'] == 'taco-bounty':
                 payup(msg_team_id, msg_user_id, text)
-            elif event['reaction'] == 'udidit':
+            elif event['reaction'] == 'rick':
                 payup(msg_team_id, event_user_id, text)
     return "Ok"
 
