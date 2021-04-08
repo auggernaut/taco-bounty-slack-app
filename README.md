@@ -11,8 +11,8 @@ https://lethain.com/creating-slack-app-python/
 https://cloud.google.com/sdk/docs/install
 
 ### Set Env
-mv the service_account.json file to `reflect` directory  
-update `reflect/env.yaml` with slack credentials
+mv the service_account.json file to `bounties` directory  
+update `bounties/env.yaml` with slack credentials
 
 ### Test locally
 Set env variable `export GOOGLE_APPLICATION_CREDENTIALS="[PATH_TO_JSON]"`  
@@ -27,5 +27,5 @@ poke around
 ```
 
 ### Deploy scripts to gcloud
-`cd reflect`  
+`cd bounties`  
 `gcloud functions deploy dispatch --env-vars-file env.yaml --runtime python37 --trigger-http`

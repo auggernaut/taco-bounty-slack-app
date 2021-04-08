@@ -27,7 +27,7 @@ def tasks(team_id, user_id):
     return ref
 
 
-def reflect(team_id, user_id, text):
+def payup(team_id, user_id, text):
     doc = {
         'team': team_id,
         'user': user_id,
@@ -38,7 +38,7 @@ def reflect(team_id, user_id, text):
     col.add(doc)
 
 
-def recall(team_id, user_id, text):
+def bounties(team_id, user_id, text):
     col = tasks(team_id, user_id)
     for task in col.stream():
         yield task.to_dict()['text']

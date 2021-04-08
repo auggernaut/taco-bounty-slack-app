@@ -1,7 +1,7 @@
 from flask import jsonify
 from api import get_message, slack_api
 from utils import block
-from storage import reflect, recall
+from storage import payup, bounties
 
 
 def url_verification_event(request):
@@ -24,19 +24,19 @@ def reaction_added_event(request):
             msg = msg_resp['messages'][0]
             msg_team_id, msg_user_id, text  = msg['team'], msg['user'], msg['text']
             if event['reaction'] == 'ididit':
-                reflect(msg_team_id, msg_user_id, text)
+                payup(msg_team_id, msg_user_id, text)
             elif event['reaction'] == 'udidit':
-                reflect(msg_team_id, event_user_id, text)
+                payup(msg_team_id, event_user_id, text)
     return "Ok"
 
 def app_home_opened_event(request):
     parsed = request.json
     user_id = parsed['event']['user']
     team_id = parsed['team_id']
-    items = recall(team_id, user_id, "last 14 days")
+    items = bounties(team_id, user_id, "last 14 days")
     items_text = "\n".join(["%s. %s" % (i, x) for i, x in enumerate(items, 1)])
     blocks_spec = [
-        ('mrkdwn', "Your home tab for Reflect"),
+        ('mrkdwn', "Your home tab for taco bounties"),
         ('divider',),
         ('mrkdwn', items_text),
         ('divider',),

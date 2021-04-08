@@ -1,14 +1,14 @@
 """
 Simple Slack application to track accomplishments.
 
-See https://github.com/lethain/reflect-slack-app
-    https://lethain.com/creating-reflect-slack-app/
+See https://github.com/lethain/payup-slack-app
+    https://lethain.com/creating-payup-slack-app/
 
 """
 import os
 from utils import verify
 from api import oauth_access
-from commands import reflect_command, recall_command
+from commands import payup_command, bounties_command
 from events import url_verification_event, reaction_added_event, app_home_opened_event
 from storage import set_credentials
 
@@ -17,8 +17,8 @@ ROUTES = (
     ('event/url_verification', url_verification_event),
     ('event/event_callback/app_home_opened', app_home_opened_event),
     ('event/event_callback/reaction_added', reaction_added_event),
-    ('command/reflect', reflect_command),
-    ('command/recall', recall_command),
+    ('command/payup', payup_command),
+    ('command/bounties', bounties_command),
 )
 
 def dispatch(request):
